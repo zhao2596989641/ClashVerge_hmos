@@ -37,7 +37,7 @@ mihomo 内核以 **native 子进程** 运行，TUN 由 **VpnExtensionAbility** �
 | 内核 | mihomo **v1.19.34**（源码随仓库提供，`bridge/` 为本项目新增） |
 | 目标平台 | HarmonyOS API 26，`2in1` + `tablet` |
 | 前端基线 | Clash Verge Rev `b3da333b`（2026-11-13，`v2.5.10-65-gb3da333b`） |
-| 许可证 | **GPL-3.0**（上游为 GPL 系，衍生作品必须同协议） |
+| 许可证 | **GPL-3.0-only**（上游为 GPL 系，衍生作品必须同协议） |
 
 ## 功能
 
@@ -158,7 +158,7 @@ sh scripts/build-hap.sh
 ## 许可证与致谢
 
 本项目以 **GNU General Public License v3.0** 发布，完整文本见 [LICENSE](LICENSE)。
-它衍生自 Clash Verge Rev（GPL-3.0-only）与 mihomo（GPL-3.0），因此**必须**继续以 GPL-3.0 分发。
+它衍生自 Clash Verge Rev（GPL-3.0-only）与 mihomo（GPL-3.0），因此**必须**继续以 GPL-3.0-only 分发。
 若你分发由本仓库构建的 HAP，请同时提供对应源码并保留 [LICENSE](LICENSE) 与
 [NOTICE.md](NOTICE.md) 中的版权与修改声明。
 

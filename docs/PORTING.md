@@ -157,5 +157,5 @@
 
 ## 7. 许可证
 
-本项目为 GPL-3.0 衍生作品。修改清单、上游版权与第三方素材见 [../NOTICE.md](../NOTICE.md)。
+本项目为 GPL-3.0-only 衍生作品。修改清单、上游版权与第三方素材见 [../NOTICE.md](../NOTICE.md)。
 分发 HAP 时请附上 `LICENSE` 与 `NOTICE.md`，并确保对应源码可获取。

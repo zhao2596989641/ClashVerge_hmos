@@ -30,4 +30,4 @@
 
 ### 许可
 
-GPL-3.0。上游与第三方组件见 [NOTICE.md](NOTICE.md)。
+GPL-3.0-only。上游与第三方组件见 [NOTICE.md](NOTICE.md)。
