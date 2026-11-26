@@ -1,0 +1,64 @@
+{
+  // 这是示例配置。复制为 build-profile.json5 后，在 DevEco Studio 的
+  // File → Project Structure → Project → Signing Configs 里生成自己的调试签名，
+  // 或手动填入证书 / Profile 路径。仓库不包含任何签名材料。
+  "app": {
+    "signingConfigs": [
+      /*
+      {
+        "name": "default",
+        "material": {
+          "storePassword": "<your encrypted store password>",
+          "certpath": "/path/to/your.cer",
+          "keyAlias": "debugKey",
+          "keyPassword": "<your encrypted key password>",
+          "profile": "/path/to/your.p7b",
+          "signAlg": "SHA256withECDSA",
+          "storeFile": "/path/to/your.p12"
+        },
+        "type": "HarmonyOS"
+      }
+      */
+    ],
+    "products": [
+      {
+        "name": "default",
+        // 配置好签名后，在这里加上 "signingConfig": "default"
+        "targetSdkVersion": "26.0.0",
+        // 自用向：不追求向下兼容，compatible 直接对齐 target。
+        // API 26 的接口（如 http.RequestMethod.PATCH、vpnExtension.createVpnObserver 等）
+        // 都可以直接调用，不会出现 "supported since SDK version..." 警告。
+        "compatibleSdkVersion": "26.0.0",
+        "runtimeOS": "HarmonyOS",
+        "buildOption": {
+          "strictMode": {
+            "caseSensitiveCheck": true,
+            "useNormalizedOHMUrl": true
+          }
+        }
+      }
+    ],
+    "buildModeSet": [
+      {
+        "name": "debug"
+      },
+      {
+        "name": "release"
+      }
+    ]
+  },
+  "modules": [
+    {
+      "name": "entry",
+      "srcPath": "./entry",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    }
+  ]
+}

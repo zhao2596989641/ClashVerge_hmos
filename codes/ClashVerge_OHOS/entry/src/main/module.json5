@@ -1,0 +1,139 @@
+{
+  "module": {
+    "name": "entry",
+    "type": "entry",
+    "description": "$string:module_desc",
+    "mainElement": "EntryAbility",
+    "deviceTypes": [
+      "2in1",
+      "tablet"
+    ],
+    "deliveryWithInstall": true,
+    "installationFree": false,
+    "compressNativeLibs": false,
+    "extractNativeLibs": true,
+    "pages": "$profile:main_pages",
+    "requestPermissions": [
+      {
+        "name": "ohos.permission.INTERNET",
+        "reason": "$string:reason_internet",
+        "usedScene": {
+          "abilities": [
+            "EntryAbility"
+          ],
+          "when": "always"
+        }
+      },
+      {
+        "name": "ohos.permission.GET_NETWORK_INFO",
+        "reason": "$string:reason_network_info",
+        "usedScene": {
+          "abilities": [
+            "EntryAbility"
+          ],
+          "when": "always"
+        }
+      },
+      {
+        "name": "ohos.permission.GET_BUNDLE_INFO",
+        "reason": "$string:reason_bundle_info",
+        "usedScene": {
+          "abilities": [
+            "EntryAbility"
+          ],
+          "when": "inuse"
+        }
+      },
+      {
+        "name": "ohos.permission.KEEP_BACKGROUND_RUNNING",
+        "reason": "$string:reason_background",
+        "usedScene": {
+          "abilities": [
+            "EntryAbility"
+          ],
+          "when": "always"
+        }
+      }
+      ,
+      {
+        "name": "ohos.permission.SET_WINDOW_TRANSPARENT",
+        "reason": "$string:reason_window_transparent",
+        "usedScene": {
+          "abilities": [
+            "EntryAbility",
+            "TrayStatusBarAbility"
+          ],
+          "when": "inuse"
+        }
+      }
+    ],
+    "abilities": [
+      {
+        "name": "EntryAbility",
+        "srcEntry": "./ets/entryability/EntryAbility.ets",
+        // 隐藏 Dock/任务栏上的运行图标（托盘图标仍保留）——用户要求关闭窗口后只留托盘
+        "excludeFromDock": true,
+        "description": "$string:EntryAbility_desc",
+        "icon": "$media:layered_image",
+        "label": "$string:EntryAbility_label",
+        // 系统启动页（应用代码跑起来之前那一帧）**不画 logo**：startIcon 是 512×512 全透明图。
+        // 原因：startWindowIcon 只能按系统深浅色取 base/dark 资源，做不到"跟应用主题"，
+        // 而主人明确要「深色应用就白 logo、浅色就黑 logo」；旧版那张 1024px 的蓝色猫头
+        // 又是 144px 位图放大来的，边缘全是锯齿。
+        // 现在的开屏 logo 由 pages/Index 的启动层自己画（纯白/纯黑两版，矢量光栅化）。
+        // 官方论坛同款做法：startWindowIcon 必填 → 填透明空图即可隐藏默认启动页。
+        "startWindowIcon": "$media:startIcon",
+        "startWindowBackground": "$color:start_window_background",
+        // ⚠️ 不配这里，backgroundTaskManager.startBackgroundRunning 一定失败（返回"未配置长时任务"）。
+        // 官方《连接 VPN》服务生命周期：调用 startVpnExtensionAbility 的应用进程退出时系统会停 VPN，
+        // 所以主进程必须靠长时任务活着。
+        // taskKeeping = 计算任务（PC/2in1 API 21+ 可用，无进度限制，首选）
+        // dataTransfer = 数据传输（非 PC 的兜底；10 分钟不更新进度会被取消）
+        "backgroundModes": [
+          "taskKeeping",
+          "dataTransfer"
+        ],
+        "exported": true,
+        "skills": [
+          {
+            "entities": [
+              "entity.system.home"
+            ],
+            "actions": [
+              "ohos.want.action.home"
+            ]
+          }
+        ]
+      },
+      {
+        // 托盘后台 Ability：TrayIcon.hold 以 NEW_PROCESS_ATTACH_TO_STATUS_BAR_ITEM 拉起，
+        // 让主 Ability 的 hideAbility()（关闭收进托盘）具备 SDK 前置条件。
+        "name": "BackGroundAbility",
+        "srcEntry": "./ets/backgroundability/BackGroundAbility.ets",
+        "description": "$string:EntryAbility_desc",
+        "icon": "$media:layered_image",
+        "label": "$string:EntryAbility_label",
+        "startWindowIcon": "$media:startIcon",
+        "startWindowBackground": "$color:start_window_background",
+        "exported": true
+      }
+    ],
+    "extensionAbilities": [
+      {
+        "name": "ClashVpnExtensionAbility",
+        "srcEntry": "./ets/vpnability/ClashVpnExtensionAbility.ets",
+        "type": "vpn",
+        "description": "$string:VpnAbility_desc",
+        "exported": false
+      },
+      {
+        // 状态栏图标左键业务弹窗（tray_event=tray_menu 时启用）
+        "name": "TrayStatusBarAbility",
+        "srcEntry": "./ets/tray/TrayStatusBarAbility.ets",
+        "type": "statusBarView",
+        "description": "$string:TrayStatusBarAbility_desc",
+        "exported": false
+      }
+    ]
+  }
+}

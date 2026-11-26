@@ -1,0 +1,21 @@
+/oh_modules
+**/build
+/.hvigor
+.cxx
+/.clangd
+/.clang-format
+/.clang-tidy
+**/.test
+/.appanalyzer
+/.bitfun
+
+# 内核源码树随仓库提供（core/mihomo-1.19.34，含 bridge/）；
+# 以下仅为构建产物、工具链与本地回归数据
+/core/mihomo.tar.gz
+/core/out
+/core/mihomo-host
+/core/runhome
+/core/runhome2
+/core/go-ohos
+/entry/libs
+/.tmpgo

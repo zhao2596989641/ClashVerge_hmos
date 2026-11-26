@@ -1,0 +1,10 @@
+{
+  "app": {
+    "bundleName": "com.lyldeer.clashverge",
+    "vendor": "lyldeer",
+    "versionCode": 2600000,
+    "versionName": "2.6.0",
+    "icon": "$media:layered_image",
+    "label": "$string:app_name"
+  }
+}

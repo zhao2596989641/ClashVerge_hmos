@@ -1,0 +1,48 @@
+{
+  "string": [
+    {
+      "name": "app_name",
+      "value": "Clash Verge"
+    },
+    {
+      "name": "module_desc",
+      "value": "Clash Verge for HarmonyOS"
+    },
+    {
+      "name": "EntryAbility_desc",
+      "value": "Clash Verge 主界面"
+    },
+    {
+      "name": "EntryAbility_label",
+      "value": "Clash Verge"
+    },
+    {
+      "name": "VpnAbility_desc",
+      "value": "Clash Verge VPN 内核扩展"
+    },
+    {
+      "name": "TrayStatusBarAbility_desc",
+      "value": "Clash Verge 托盘快捷面板"
+    },
+    {
+      "name": "reason_internet",
+      "value": "下载订阅、连接代理节点需要访问网络"
+    },
+    {
+      "name": "reason_network_info",
+      "value": "读取网络状态用于代理连接判断"
+    },
+    {
+      "name": "reason_bundle_info",
+      "value": "读取已安装应用列表用于分应用代理"
+    },
+    {
+      "name": "reason_background",
+      "value": "代理需要在后台持续运行"
+    },
+    {
+      "name": "reason_window_transparent",
+      "value": "状态栏面板使用半透明模糊背景"
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+# ---------------------------------------------------------------------------
+# ClashVerge_hmos · 仓库忽略规则
+# ---------------------------------------------------------------------------
+
+# 依赖与构建产物
+codes/ClashVerge_OHOS/webapp/node_modules/
+codes/ClashVerge_OHOS/webapp/dist/
+codes/ClashVerge_OHOS/web-build-out/
+codes/ClashVerge_OHOS/entry/src/main/resources/rawfile/web/
+codes/ClashVerge_OHOS/entry/libs/
+codes/ClashVerge_OHOS/entry/build/
+
+# 本机签名配置 / DevEco 本地文件（仓库只提供 build-profile.example.json5）
+codes/ClashVerge_OHOS/build-profile.json5
+codes/ClashVerge_OHOS/local.properties
+
+# 本地工具链、内核构建中间产物与本地回归数据
+codes/ClashVerge_OHOS/core/go-ohos/
+codes/ClashVerge_OHOS/core/out/
+codes/ClashVerge_OHOS/core/mihomo-host
+codes/ClashVerge_OHOS/core/mihomo.tar.gz
+codes/ClashVerge_OHOS/core/runhome/
+codes/ClashVerge_OHOS/core/runhome2/
+codes/ClashVerge_OHOS/.tmpgo/
+
+# 工作区内部资料（含个人路径/设备信息/过程日志，不对外发布）
+/.workbuddy/
+/logs/
+/resources/
+/.mh2
+codes/ClashVerge_OHOS/docs/HANDOFF*.md
+codes/ClashVerge_OHOS/docs/COLLAB.md
+codes/ClashVerge_OHOS/docs/PLAN.md
+codes/ClashVerge_OHOS/docs/ASK-DEVAI-BACKGROUND.md
+
+# 系统杂项
+.DS_Store
+Thumbs.db
+*.swp
